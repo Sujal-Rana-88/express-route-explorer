@@ -1,0 +1,55 @@
+{
+  "name": "express-route-explorer",
+  "displayName": "Express Route Explorer",
+  "description": "Visual map of Express routes (GET/POST/etc.) in your workspace.",
+  "version": "0.0.3",
+  "publisher": "sujalrana",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sujal-Rana-88/express-route-explorer.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:expressRouteExplorer",
+    "onCommand:expressRouteExplorer.refresh"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "expressRouteExplorer",
+          "name": "Express Routes"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "expressRouteExplorer.refresh",
+        "title": "Refresh Express Routes"
+      },
+      {
+        "command": "expressRouteExplorer.openRoute",
+        "title": "Open Route Handler"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "echo \"No lint configured\"",
+    "test": "echo \"No tests yet\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.1",
+    "@types/vscode": "^1.106.1",
+    "typescript": "^5.9.3"
+  }
+}
