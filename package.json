@@ -15,30 +15,69 @@
   "categories": [
     "Other"
   ],
+  "main": "./out/extension.js",
   "activationEvents": [
     "onView:expressRouteExplorer",
-    "onCommand:expressRouteExplorer.refresh"
+    "onCommand:expressRouteExplorer.refresh",
+    "onCommand:expressRouteExplorer.openRoute",
+    "onCommand:expressRouteExplorer.tryRoute"
   ],
-  "main": "./out/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "expressRouteExplorerContainer",
+          "title": "Express Routes",
+          "icon": "images/light-theme.svg"
+        }
+      ]
+    },
     "views": {
-      "explorer": [
+      "expressRouteExplorerContainer": [
         {
           "id": "expressRouteExplorer",
-          "name": "Express Routes"
+          "name": "Routes"
         }
       ]
     },
     "commands": [
       {
         "command": "expressRouteExplorer.refresh",
-        "title": "Refresh Express Routes"
+        "title": "Refresh Routes",
+        "category": "Express Route Explorer"
       },
       {
         "command": "expressRouteExplorer.openRoute",
-        "title": "Open Route Handler"
+        "title": "Open Route Handler",
+        "category": "Express Route Explorer"
+      },
+      {
+        "command": "expressRouteExplorer.tryRoute",
+        "title": "Try This API",
+        "category": "Express Route Explorer"
       }
-    ]
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "expressRouteExplorer.refresh",
+          "when": "view == expressRouteExplorer",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "expressRouteExplorer.tryRoute",
+          "when": "viewItem == expressRoute",
+          "group": "inline"
+        },
+        {
+          "command": "expressRouteExplorer.openRoute",
+          "when": "viewItem == expressRoute",
+          "group": "inline"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
